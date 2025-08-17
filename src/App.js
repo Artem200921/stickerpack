@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { StickerList } from "./components/StickerList.jsx";
+import { AppStyles } from "./AppStyles.js";
+import obj from "./data/stickerpack.json";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { selectedLabel: "" };
+  }
+
+  handleStickerClick = (label) => {
+    this.setState({ selectedLabel: label });
+  };
+  render() {
+    return (
+      <AppStyles>
+        <StickerList list={obj} click={this.handleStickerClick} />
+        <p>{this.state.selectedLabel}</p>
+      </AppStyles>
+    );
+  }
 }
 
 export default App;
