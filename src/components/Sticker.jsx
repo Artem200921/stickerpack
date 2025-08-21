@@ -1,4 +1,4 @@
-import { Item } from "./Sticker";
+import { Item } from "./Sticker.js";
 import React from "react";
 
 export class Sticker extends React.Component {
